@@ -7,12 +7,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 
 public class MeteoController {
-	Model model;
 
+	Model model;
+	
 	@FXML
 	private ResourceBundle resources;
 
@@ -33,14 +33,27 @@ public class MeteoController {
 
 	@FXML
 	void doCalcolaSequenza(ActionEvent event) {
-		int mese = boxMese.getValue();
-		model.trovaSequenza(mese);
+		txtResult.clear();
+		
+		if(boxMese.getValue() != null){
+			int mese = boxMese.getValue();
+			//String ris = model.trovaSequenza(mese);
+			
+			txtResult.appendText(model.trovaSequenza(mese));
+		} else {
+			txtResult.appendText("Selezionare un mese!");
+		}
 	}
 
 	@FXML
 	void doCalcolaUmidita(ActionEvent event) {
-		int mese = boxMese.getValue();		
-		model.getUmiditaMedia(mese);
+		txtResult.clear();
+		
+		if(boxMese.getValue() != null){
+			txtResult.appendText(model.getUmiditaMedia(boxMese.getValue()).toString());
+		} else {
+			txtResult.appendText("Selezionare un mese!");
+		}
 	}
 
 	@FXML
@@ -52,8 +65,10 @@ public class MeteoController {
 	}
 
 	public void setModel(Model model) {
-		this.model=model;
-		boxMese.getItems().addAll(1, 2 , 3, 4 ,5 ,6, 7, 8, 9, 10, 11 ,12);
+		this.model= model;
+		
+		for(int i =1; i<13; i++)
+			boxMese.getItems().add(i);
 	}
-
+	
 }

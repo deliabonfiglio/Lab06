@@ -7,6 +7,7 @@ public class Citta {
 	private String nome;
 	private List<Rilevamento> rilevamenti;
 	private int counter = 0;
+	private double costo;
 	
 	public Citta(String nome) {
 		this.nome = nome;
@@ -44,10 +45,6 @@ public class Citta {
 	public void increaseCounter() {
 		this.counter += 1;
 	}
-	
-	public void decreaseCounter() {
-		this.counter -= 1;
-	}
 
 	@Override
 	public int hashCode() {
@@ -77,6 +74,19 @@ public class Citta {
 	@Override
 	public String toString() {
 		return nome;
+	}
+
+	public void decreaseCounter() {
+		this.counter = counter-1;
+		
+	}
+
+	public void setCosto(Double avgRilevamentiLocalitaMese) {
+		this.costo= avgRilevamentiLocalitaMese;
+		
+	}
+	public double getCosto(){
+		return costo;
 	}
 	
 }
