@@ -88,7 +88,12 @@ public class Model {
 				if(controllaParziale(parziale))
 					ricerca(parziale, step+1);
 				
-			parziale.remove(sc);
+//devo RIMUOVERE L'ULTIMO OGGETTO AGGIUNTO, MA NON COME OGGETTO! DEVO DARE L'INDICE!!!
+//nb: LO STEP MI DA L'INDICE DI CHI STO AGGIUNGENDO
+// step = parziale.size()-1
+
+			//parziale.remove(parziale.size()-1);
+			parziale.remove(step);
 			ctemp.decreaseCounter();
 		}
 		
